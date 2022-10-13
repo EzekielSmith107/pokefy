@@ -19,7 +19,7 @@ import umbreon from '../images/umbreon.png'
 const Select = () => {
   return (
     <div className='max-w-[1240px] mx-auto px-4 py-4 grid sm:grid-cols-3 lg:grid-cols-5 gap-4'>
-        <SelectCard bg={bulbasaur} alt='bulbasaur' text='Bulbasaur' />
+        <SelectCard bg={bulbasaur} alt='bulbasaur' text='Bulbasaur' answer='bulbasaur' />
         <SelectCard bg={charizard} alt='charizard' text='Charizard' />
         <SelectCard bg={dragapult} alt='dragapult' text='Dragapult' />
         <SelectCard bg={garchomp} alt='garchomp' text='Garchomp' />
