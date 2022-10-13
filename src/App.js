@@ -1,8 +1,13 @@
 import React from "react";
+import Landing from "./components/Landing";
+import Select from "./components/Select";
 
 function App() {
   return (
-    <div></div>
+    <div>
+      <Landing />
+      <Select />
+    </div>
   );
 }
 
