@@ -19,23 +19,23 @@ import umbreon from '../images/umbreon.png'
 const Select = () => {
   return (
     <div className='max-w-[1240px] mx-auto px-4 py-4 grid sm:grid-cols-3 lg:grid-cols-5 gap-4'>
-        <SelectCard bg={bulbasaur} alt='bulbasaur' text='Bulbasaur' answer='bulbasaur' />
-        <SelectCard bg={charizard} alt='charizard' text='Charizard' />
-        <SelectCard bg={dragapult} alt='dragapult' text='Dragapult' />
-        <SelectCard bg={garchomp} alt='garchomp' text='Garchomp' />
-        <SelectCard bg={gardevoir} alt='gardevoir' text='Gardevoir' />
+        <SelectCard bg={bulbasaur} alt='bulbasaur' text='Bulbasaur' value='bulbasaur' />
+        <SelectCard bg={charizard} alt='charizard' text='Charizard' value='charizard' />
+        <SelectCard bg={dragapult} alt='dragapult' text='Dragapult' value='dragapult' />
+        <SelectCard bg={garchomp} alt='garchomp' text='Garchomp' value='garchomp' />
+        <SelectCard bg={gardevoir} alt='gardevoir' text='Gardevoir' value='gardevoir' />
 
-        <SelectCard bg={gengar} alt='gengar' text='Gengar' />
-        <SelectCard bg={greninja} alt='greninja' text='Greninja' />
-        <SelectCard bg={lucario} alt='lucario' text='Lucario' />
-        <SelectCard bg={lugia} alt='lugia' text='Lugia' />
-        <SelectCard bg={mimikyu} alt='mimikyu' text='Mimikyu' />
+        <SelectCard bg={gengar} alt='gengar' text='Gengar' value='gengar' />
+        <SelectCard bg={greninja} alt='greninja' text='Greninja' value='greninja' />
+        <SelectCard bg={lucario} alt='lucario' text='Lucario' value='lucario' />
+        <SelectCard bg={lugia} alt='lugia' text='Lugia' value='lugia' />
+        <SelectCard bg={mimikyu} alt='mimikyu' text='Mimikyu' value='mimikyu' />
 
-        <SelectCard bg={rayquaza} alt='rayquaza' text='Rayquaza' />
-        <SelectCard bg={sylveon} alt='sylveon' text='Sylveon' />
-        <SelectCard bg={toxtricity} alt='toxtricity' text='Toxtricity' />
-        <SelectCard bg={tyranitar} alt='tyranitar' text='Tyranitar' />
-        <SelectCard bg={umbreon} alt='umbreon' text='Umbreon' />
+        <SelectCard bg={rayquaza} alt='rayquaza' text='Rayquaza' value='rayquaza' />
+        <SelectCard bg={sylveon} alt='sylveon' text='Sylveon' value='sylveon' />
+        <SelectCard bg={toxtricity} alt='toxtricity' text='Toxtricity' value='toxtricity' />
+        <SelectCard bg={tyranitar} alt='tyranitar' text='Tyranitar' value='tyranitar' />
+        <SelectCard bg={umbreon} alt='umbreon' text='Umbreon' value='umbreon' />
     </div>
   )
 }

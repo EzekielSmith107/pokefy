@@ -1,12 +1,17 @@
-import React from 'react'
+import React from 'react';
+import { useNavigate } from 'react-router-dom';
 
 const SelectCard = (props) => {
+  const navigate = useNavigate()
+  
   const getSong = (e) => {
-    console.log(e.target.firstChild.firstChild)
+    console.log(e)
+
+    navigate('/song', { state: e })
   }
   
   return (
-    <button className='relative cursor-pointer' onClick={getSong} >
+    <button className='relative cursor-pointer' onClick={() => getSong(props.value)} >
         <img className='w-full h-full object-cover' src={props.bg} alt={props.alt} />
         <div className='bg-gray-900/30 absolute top-0 left-0 w-full h-full'  >
             <p className='left-4 bottom-4 text-2xl font-bold text-white absolute'>{props.text}</p>
