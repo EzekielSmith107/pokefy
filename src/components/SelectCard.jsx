@@ -4,10 +4,8 @@ import { useNavigate } from 'react-router-dom';
 const SelectCard = (props) => {
   const navigate = useNavigate()
   
-  const getSong = (e) => {
-    console.log(e)
-
-    navigate('/song', { state: e })
+  const getSong = (value) => {
+    navigate('/song', { state: value })
   }
   
   return (
