@@ -1,4 +1,4 @@
-import { React, useEffect, useState } from 'react'
+import { React, useEffect, useState, useCallback } from 'react'
 import axios from 'axios'
 import { useLocation } from 'react-router-dom'
 
@@ -8,30 +8,32 @@ const Song = () => {
 
   const [ track, setTrack ] = useState([]);
 
-  //* Stack overflow: https://stackoverflow.com/questions/53070970/infinite-loop-in-useeffect
-
-  function getSong(characteristic) {
-    axios.get(`https://api.deezer.com/search?q=track:"${characteristic}"`)
-      .then((response) => {
-        setTrack(response.data)
-        console.log(response.data)
-      })
-  }
-
-  useEffect(() => {
+  const getSong = useCallback(async () => {
     axios.get(`https://pokeapi.co/api/v2/pokemon-species/${pokemon}/`)
       .then((response) => {
         let characteristic = response.data.color.name
         axios.get(`https://api.deezer.com/search?q=track:"${characteristic}"`)
           .then((response) => {
-            setTrack(response.data)
-            console.log(response.data)
+            let info = []
+            info.push(response.data.data[0].album.cover)
+            info.push(response.data.data[0].title)
+            info.push(response.data.data[0].preview)
+            setTrack(info)
+            
+            console.log(response.data.data[0])
+          })
       })
-      }, [])
-  })
+  }, [pokemon])
+
+  useEffect(() => {
+    getSong()
+  }, [getSong])
   
   return (
-    <div>Song</div>
+    <div>
+      <h1>Song</h1>
+      <div>[{track}]</div>
+    </div>
   )
 }
 
