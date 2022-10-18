@@ -19,8 +19,6 @@ const Song = () => {
             info.push(response.data.data[0].title)
             info.push(response.data.data[0].preview)
             setTrack(info)
-            
-            console.log(response.data.data[0])
           })
       })
   }, [pokemon])
@@ -32,7 +30,9 @@ const Song = () => {
   return (
     <div>
       <h1>Song</h1>
-      <div>[{track}]</div>
+      <h3>{track[1]}</h3>
+      <img src={track[0]} alt='album cover'></img>
+      <audio controls src={track[2]} typeof='audio/mp3'>Browser does not support.</audio>
     </div>
   )
 }
