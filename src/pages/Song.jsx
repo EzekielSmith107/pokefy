@@ -11,7 +11,15 @@ const Song = () => {
   const getSong = useCallback(async () => {
     axios.get(`https://pokeapi.co/api/v2/pokemon-species/${pokemon}/`)
       .then((response) => {
-        let characteristic = response.data.color.name
+        console.log(response)
+        let color = response.data.color.name
+        let habitat = response.data.habitat.name
+        let flavorText = (response.data.flavor_text_entries[0].flavor_text).substring(0, 10)
+        console.log(color)
+        console.log(habitat)
+        console.log(flavorText)
+        let characteristic = flavorText
+
         axios.get(`https://api.deezer.com/search?q=track:"${characteristic}"`)
           .then((response) => {
             let info = []
