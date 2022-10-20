@@ -1,19 +1,19 @@
 import { React, useEffect, useState, useCallback } from "react";
 import axios from "axios";
-import { useLocation } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 
 const Song = () => {
   const location = useLocation();
   let pokemon = location.state;
+  const navigate = useNavigate();
 
   const [track, setTrack] = useState([]);
 
   function createAttributeString(pokeObj) {
     let color = pokeObj.data.color.name;
-    let name = pokeObj.data.name;
     let eggGroup = pokeObj.data.egg_groups[0].name;
 
-    let attributeArray = [color, name, eggGroup];
+    let attributeArray = [color, eggGroup];
 
     return attributeArray[Math.floor(Math.random() * attributeArray.length)];
   }
@@ -27,6 +27,7 @@ const Song = () => {
     setupArray.push(randomSong.title);
     setupArray.push(randomSong.album.cover);
     setupArray.push(randomSong.preview);
+    setupArray.push(randomSong.link);
 
     return setupArray;
   }
@@ -57,6 +58,12 @@ const Song = () => {
       <audio controls src={track[2]} typeof="audio/mp3">
         Browser does not support audio.
       </audio>
+      <button onClick={() => navigate("/")}>Choose another pokemon!</button>
+      <button>
+        <a href={track[3]} target="blank">
+          See full song here!
+        </a>
+      </button>
     </div>
   );
 };
