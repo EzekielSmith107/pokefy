@@ -24,7 +24,7 @@ const Song = () => {
     let randomSong =
       resultArray[Math.floor(Math.random() * resultArray.length)];
 
-    setupArray.push(randomSong.title);
+    setupArray.push(randomSong.title || "Title not available");
     setupArray.push(randomSong.album.cover);
     setupArray.push(randomSong.preview);
     setupArray.push(randomSong.link);
