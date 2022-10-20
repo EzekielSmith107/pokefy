@@ -1,7 +1,7 @@
 import React from "react";
 import Landing from "./pages/Landing";
 import Song from "./pages/Song";
-import { Route, Routes } from 'react-router-dom';
+import { Route, Routes } from "react-router-dom";
 
 function App() {
   return (
