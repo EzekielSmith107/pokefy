@@ -14,11 +14,9 @@ const Song = () => {
     let attributeArray = [color];
 
     // Gardevoir error handling and filtering out audio books
-    if (pokeObj.data.egg_groups[0]) {
-      if (pokeObj.data.egg_groups[0].name !== "humanshape") {
-        let eggGroup = pokeObj.data.egg_groups[0].name.replace(/\d+/g, "");
-        attributeArray.push(eggGroup);
-      }
+    if (pokeObj.data.egg_groups[0].name !== "humanshape") {
+      let eggGroup = pokeObj.data.egg_groups[0].name.replace(/\d+/g, "");
+      attributeArray.push(eggGroup);
     }
 
     // Lucario error handling
