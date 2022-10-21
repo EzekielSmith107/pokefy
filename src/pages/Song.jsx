@@ -11,9 +11,15 @@ const Song = () => {
 
   function createAttributeString(pokeObj) {
     let color = pokeObj.data.color.name;
-    // Filter out audio books with regex
-    let eggGroup = pokeObj.data.egg_groups[0].name.replace(/\d+/g, "");
-    let attributeArray = [color, eggGroup];
+    let attributeArray = [color];
+
+    // Gardevoir error handling and filtering out audio books
+    if (pokeObj.data.egg_groups[0]) {
+      if (pokeObj.data.egg_groups[0].name !== "humanshape") {
+        let eggGroup = pokeObj.data.egg_groups[0].name.replace(/\d+/g, "");
+        attributeArray.push(eggGroup);
+      }
+    }
 
     // Lucario error handling
     if (pokeObj.data.egg_groups[1]) {
@@ -31,6 +37,14 @@ const Song = () => {
     let resultArray = songObj.data.data;
     let randomSong =
       resultArray[Math.floor(Math.random() * resultArray.length)];
+
+    // Filter out lullabies and explicit_lyrics
+    while (
+      randomSong.title.includes("noise") ||
+      randomSong.explicit_lyrics === true
+    ) {
+      randomSong = resultArray[Math.floor(Math.random() * resultArray.length)];
+    }
 
     setupArray.push(randomSong.title);
     setupArray.push(randomSong.album.cover);
