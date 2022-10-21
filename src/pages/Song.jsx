@@ -11,9 +11,17 @@ const Song = () => {
 
   function createAttributeString(pokeObj) {
     let color = pokeObj.data.color.name;
+    // Filter out audio books with regex
     let eggGroup = pokeObj.data.egg_groups[0].name.replace(/\d+/g, "");
-
     let attributeArray = [color, eggGroup];
+
+    // Lucario error handling
+    if (pokeObj.data.egg_groups[1]) {
+      if (pokeObj.data.egg_groups[1].name !== "humanshape") {
+        let eggGroupTwo = pokeObj.data.egg_groups[1].name.replace(/\d+/g, "");
+        attributeArray.push(eggGroupTwo);
+      }
+    }
 
     return attributeArray[Math.floor(Math.random() * attributeArray.length)];
   }
@@ -24,7 +32,7 @@ const Song = () => {
     let randomSong =
       resultArray[Math.floor(Math.random() * resultArray.length)];
 
-    setupArray.push(randomSong.title || "Title not available");
+    setupArray.push(randomSong.title);
     setupArray.push(randomSong.album.cover);
     setupArray.push(randomSong.preview);
     setupArray.push(randomSong.link);
@@ -42,8 +50,10 @@ const Song = () => {
           .then((response) => {
             let songInfoArray = arraySetupForMappingSong(response);
             setTrack(songInfoArray);
-          });
-      });
+          })
+          .catch((error) => console.log(error.message));
+      })
+      .catch((error) => console.log(error.message));
   }, [pokemon]);
 
   useEffect(() => {
