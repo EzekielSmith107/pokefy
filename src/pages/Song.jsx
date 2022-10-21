@@ -61,19 +61,19 @@ const Song = () => {
   }, [getSong]);
 
   return (
-    <div className="max-w-[1240px] mx-auto py-4 px-4 flex flex-col text-center justify-center">
+    <div className="max-w-[1240px] h-screen mx-auto py-4 px-4 flex flex-col items-center justify-center">
       <h1 className="py-4">Song</h1>
       <h3>{track[0]}</h3>
-      <div className="flex text-center justify-center py-4">
+      <div className="py-4">
         <img className="w-auto h-auto" src={track[1]} alt="album cover"></img>
       </div>
-      <div className="flex text-center justify-center">
+      <div>
         <audio controls src={track[2]} typeof="audio/mp3">
           Browser does not support audio.
         </audio>
       </div>
 
-      <div className="flex space-x-2 justify-center py-4">
+      <div className="flex space-x-2 py-4">
         <button
           className="inline-block px-6 py-2.5 bg-blue-600 text-white font-medium text-xs leading-tight uppercase rounded shadow-md hover:bg-blue-700 hover:shadow-lg focus:bg-blue-700 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-blue-800 active:shadow-lg transition duration-150 ease-in-out"
           onClick={() => navigate("/")}
