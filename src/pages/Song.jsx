@@ -38,7 +38,7 @@ const Song = () => {
 
     // Filter out lullabies and explicit_lyrics
     while (
-      randomSong.title.includes("noise") ||
+      randomSong.title.toLowerCase().includes("noise") ||
       randomSong.explicit_lyrics === true
     ) {
       randomSong = resultArray[Math.floor(Math.random() * resultArray.length)];
