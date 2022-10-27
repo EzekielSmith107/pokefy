@@ -1,8 +1,13 @@
 import { render, screen } from "@testing-library/react";
+import { BrowserRouter } from "react-router-dom";
 import App from "./App";
 
 test("landing page loads correctly", () => {
-  render(<App />);
+  render(
+    <BrowserRouter>
+      <App />
+    </BrowserRouter>
+  );
   const heading = screen.getByRole("heading", { level: 1 });
   expect(heading).toBeInTheDocument();
 
