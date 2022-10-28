@@ -2,55 +2,54 @@ import { React, useEffect, useState, useCallback } from "react";
 import axios from "axios";
 import { useLocation, useNavigate } from "react-router-dom";
 
+export function createAttributeString(pokeObj) {
+  let color = pokeObj.data.color.name;
+  let attributeArray = [color];
+
+  // Gardevoir error handling and filtering out audio books
+  if (pokeObj.data.egg_groups[0].name !== "humanshape") {
+    let eggGroup = pokeObj.data.egg_groups[0].name.replace(/\d+/g, "");
+    attributeArray.push(eggGroup);
+  }
+
+  // Lucario error handling
+  if (pokeObj.data.egg_groups[1]) {
+    if (pokeObj.data.egg_groups[1].name !== "humanshape") {
+      let eggGroupTwo = pokeObj.data.egg_groups[1].name.replace(/\d+/g, "");
+      attributeArray.push(eggGroupTwo);
+    }
+  }
+
+  return attributeArray[Math.floor(Math.random() * attributeArray.length)];
+}
+
+export function arraySetupForMappingSong(songObj) {
+  let setupArray = [];
+  let resultArray = songObj.data.data;
+  let randomSong = resultArray[Math.floor(Math.random() * resultArray.length)];
+
+  // Filter out lullabies and explicit_lyrics
+  while (
+    randomSong.title.toLowerCase().includes("noise") ||
+    randomSong.explicit_lyrics === true
+  ) {
+    randomSong = resultArray[Math.floor(Math.random() * resultArray.length)];
+  }
+
+  setupArray.push(randomSong.title);
+  setupArray.push(randomSong.album.cover);
+  setupArray.push(randomSong.preview);
+  setupArray.push(randomSong.link);
+
+  return setupArray;
+}
+
 const Song = () => {
   const location = useLocation();
   let pokemon = location.state;
   const navigate = useNavigate();
 
   const [track, setTrack] = useState([]);
-
-  function createAttributeString(pokeObj) {
-    let color = pokeObj.data.color.name;
-    let attributeArray = [color];
-
-    // Gardevoir error handling and filtering out audio books
-    if (pokeObj.data.egg_groups[0].name !== "humanshape") {
-      let eggGroup = pokeObj.data.egg_groups[0].name.replace(/\d+/g, "");
-      attributeArray.push(eggGroup);
-    }
-
-    // Lucario error handling
-    if (pokeObj.data.egg_groups[1]) {
-      if (pokeObj.data.egg_groups[1].name !== "humanshape") {
-        let eggGroupTwo = pokeObj.data.egg_groups[1].name.replace(/\d+/g, "");
-        attributeArray.push(eggGroupTwo);
-      }
-    }
-
-    return attributeArray[Math.floor(Math.random() * attributeArray.length)];
-  }
-
-  function arraySetupForMappingSong(songObj) {
-    let setupArray = [];
-    let resultArray = songObj.data.data;
-    let randomSong =
-      resultArray[Math.floor(Math.random() * resultArray.length)];
-
-    // Filter out lullabies and explicit_lyrics
-    while (
-      randomSong.title.toLowerCase().includes("noise") ||
-      randomSong.explicit_lyrics === true
-    ) {
-      randomSong = resultArray[Math.floor(Math.random() * resultArray.length)];
-    }
-
-    setupArray.push(randomSong.title);
-    setupArray.push(randomSong.album.cover);
-    setupArray.push(randomSong.preview);
-    setupArray.push(randomSong.link);
-
-    return setupArray;
-  }
 
   const getSong = useCallback(async () => {
     axios
