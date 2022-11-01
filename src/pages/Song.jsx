@@ -24,6 +24,7 @@ export function createAttributeString(pokeObj) {
 }
 
 export function arraySetupForMappingSong(songObj) {
+  console.log(songObj);
   let setupArray = [];
   let resultArray = songObj.data.data;
   let randomSong = resultArray[Math.floor(Math.random() * resultArray.length)];

@@ -1,10 +1,10 @@
 import { render } from "@testing-library/react";
 import { BrowserRouter } from "react-router-dom";
 import Song from "../pages/Song";
-import { createAttributeString } from "../pages/Song";
+import { createAttributeString, arraySetupForMappingSong } from "../pages/Song";
 
 describe("testing song functions", () => {
-  test("an attribute string is properly created with pokemon object", () => {
+  test("an attribute string is created with pokemon object", () => {
     render(
       <BrowserRouter>
         <Song />
@@ -39,6 +39,6 @@ describe("testing song functions", () => {
       },
     };
 
-    expect(createAttributeString(testObj)).not.toBe("humanshape");
+    expect(createAttributeString(testObj)).toBe("white");
   });
 });
