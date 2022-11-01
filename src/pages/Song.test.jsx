@@ -16,11 +16,29 @@ describe("testing song functions", () => {
         color: {
           name: "blue",
         },
+        egg_groups: [{ name: "water" }],
       },
     };
 
-    expect(createAttributeString(testObj)).toBe("blue");
+    expect(createAttributeString(testObj)).not.toBeUndefined;
   });
 
-  test("humanshape is not included in the attribute array", () => {});
+  test("humanshape is not included in the attribute array", () => {
+    render(
+      <BrowserRouter>
+        <Song />
+      </BrowserRouter>
+    );
+
+    const testObj = {
+      data: {
+        color: {
+          name: "white",
+        },
+        egg_groups: [{ name: "humanshape" }],
+      },
+    };
+
+    expect(createAttributeString(testObj)).not.toBe("humanshape");
+  });
 });
